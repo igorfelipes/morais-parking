@@ -12,7 +12,7 @@
     <h1>Cadastro de Veículos</h1>
     {% csrf_token %}
     {{form|crispy}}
-    <button type="submit" class="btn btn-success" method="post">Autorizar</button>
+    <button type="submit" class="btn btn-success" method='post'>Autorizar</button>
     <a class="btn btn-secondary" href="{% url 'index'%}"> Voltar</a>
 </form>
 

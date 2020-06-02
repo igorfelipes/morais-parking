@@ -46,14 +46,17 @@ def deletarVeiculo(request, id):
 
 
 def entradaVeiculo(request):
+    template_name = 'entrada.html'
+    
     if request.method == 'POST':
         form = EntradaVeiculosForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('entrada-veiculo')
-    else: 
+    else:
         form = EntradaVeiculosForm()
-        formContextToRender = {
-            'form': form
-            }
-        return render(request, 'entrada.html',formContextToRender )
+    
+    context_to_render = {
+        'form': form
+    }
+    return render(request, template_name, context_to_render)
