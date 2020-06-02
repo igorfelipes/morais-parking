@@ -27,5 +27,5 @@ class EntradaVeiculosForm(ModelForm):
 
     class Meta:
         model = Entrada
-        fields = ['setor_type']
+        fields = ['setor_type', 'placa']
     
