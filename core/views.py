@@ -97,3 +97,16 @@ def monitorarVagas(request):
             'form': form
         }
         return render(request, 'monitor-vagas.html', formContextToRender)
+
+def vagasList(request):
+    vagas = Vagas.objects.all() 
+    return render(request, 'listar-vagas.html', {'vagas': vagas} )
+
+def atualizarVaga(request, id):
+    vagas = Vagas.objects.get(setor_type=id)
+    form = VagasForm(request.POST or None, instance=vagas)
+    if form.is_valid():
+        form.save()
+        return redirect('listar-vagas')
+    return render(request, 'editar-vagas.html',{'form': form,'vagas': vagas} 
+        )

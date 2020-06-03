@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title%} Home{%endblock%}
+
+{% block body%}
+<div>
+<h1>Morais Parking</h1>
+</div>
+
+
+<div class="offset-1 col-10 list-div">
+    <h1>Lista de Vagas</h1>
+      <a class="btn btn-secondary" href="{% url 'index'%}"> Voltar</a>
+    <ul class="cars-list">
+
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Setor</th>
+                <th scope="col">Quantidade de Vagas Normais</th>
+                <th scope="col">Quantidade de Vagas Especiais</th>
+                <th scope="col">Atualizar</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for vaga in vagas%}
+              <tr>
+                <td>{{vaga.setor_type}}</td>
+                <td>{{vaga.vagas_normais}}</td>
+                <td>{{vaga.vagas_especiais}}</td>    
+                <td><a href="{% url 'atualizar-vagas' vaga.setor_type %}" class="fas fa-edit"></a></td>
+              </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+
+    </ul>
+</div>
+
+{% endblock%}
