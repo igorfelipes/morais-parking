@@ -19,6 +19,8 @@
                 <th scope="col">Setor</th>
                 <th scope="col">Quantidade de Vagas Normais</th>
                 <th scope="col">Quantidade de Vagas Especiais</th>
+                <th scope="col">Vagas Normais Ocupadas</th>
+                <th scope="col">Vagas Especiais Ocupadas</th>
                 <th scope="col">Atualizar</th>
               </tr>
             </thead>
@@ -28,6 +30,8 @@
                 <td>{{vaga.setor_type}}</td>
                 <td>{{vaga.vagas_normais}}</td>
                 <td>{{vaga.vagas_especiais}}</td>    
+                <td>{{vaga.vagas_normais_ocupadas}}</td>    
+                <td>{{vaga.vagas_especiais_ocupadas}}</td>    
                 <td><a href="{% url 'atualizar-vagas' vaga.setor_type %}" class="fas fa-edit"></a></td>
               </tr>
             {% endfor %}
