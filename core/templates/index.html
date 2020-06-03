@@ -51,6 +51,18 @@
         </div>
       </div>
     </div>
+    {% if user.user_type == 1 or user.user_type == None %}  
+    <div class="col-sm-4">
+      <div class="card">
+        <img class="card-img-top" src="{% static 'img/ocorrencia.jpg' %}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">Registro de Ococrencias</h5>
+          <p class="card-text">Registrar Ocorrencias no Estacionamnento</p>
+          <a href="{% url 'cadastro-ocorrencia'%}" class="btn btn-primary">Registrar Ocorrencias</a>
+        </div>
+      </div>
+    </div>
+    {% endif %}
     {% endif %}
     {% if user.user_type == 2 or user.user_type == None %}   
     <div class="col-sm-4">
@@ -64,6 +76,7 @@
       </div>
     </div>
     {% endif %}
+    {% if user.user_type == 3 or user.user_type == None %}   
     <div class="col-sm-4">
       <div class="card">
         <img class="card-img-top" src="{% static 'img/eventos.jpg' %}" alt="Card image cap">
@@ -74,18 +87,7 @@
         </div>
       </div>
     </div>
-</div>
-  
-    <div class="col-sm-4">
-      <div class="card">
-        <img class="card-img-top" src="{% static 'img/ocorrencia.jpg' %}" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Registro de Ococrencias</h5>
-          <p class="card-text">Registrar Ocorrencias no Estacionamnento</p>
-          <a href="{% url 'cadastro-ocorrencia'%}" class="btn btn-primary">Registrar Ocorrencias</a>
-        </div>
-      </div>
-    </div>
+    {% endif %}
 </div>
 
 
