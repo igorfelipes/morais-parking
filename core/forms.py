@@ -30,8 +30,10 @@ class EntradaVeiculosForm(ModelForm):
 
         if placa.area_especial:
             vaga.vagas_especiais_ocupadas += 1 
+            vaga.vagas_especiais -= 1
         else:
             vaga.vagas_normais_ocupadas +=1
+            vaga.vagas_normais -= 1
 
         vaga.save()
         return placaInput
