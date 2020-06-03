@@ -8,4 +8,6 @@ urlpatterns = [
     path('editar-veiculo/<int:id>/', atualizarVeiculo, name='editar-veiculo'),
     path('deletar-veiculo/<int:id>/', deletarVeiculo, name='deletar-veiculo'),
     path('entrada/', entradaVeiculo, name='entrada-veiculo'),
+    path('eventos/', cadastrarEvento, name='cadastro-evento'),
+    path('ocorrencia/', cadastrarOcorrencia, name='cadastro-ocorrencia'),
 ]

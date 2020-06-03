@@ -20,6 +20,39 @@ class Entrada(models.Model):
         (4, 'setor D Geral'),
     )
 
-    setor_type = models.PositiveSmallIntegerField(choices=SETOR_TYPE_CHOICES)
+    setor_type = models.PositiveSmallIntegerField('Setores',choices=SETOR_TYPE_CHOICES)
     placa = models.CharField(max_length=7, null=False, unique=True)
+    date_joined = models.DateTimeField('Data de entrada', auto_now_add=True)
+
+class Evento(models.Model):
+    SETOR_TYPE_CHOICES = (
+        (1, 'Setor A Funcionarios'),
+        (2, 'Setor B Geral'),
+        (3, 'Setor C Geral'),
+        (4, 'Setor D Geral'),
+    )
+    evento = models.CharField(max_length=50, null=False, unique=True)
+    data = models.DateTimeField()
+    setor_type = models.PositiveSmallIntegerField('Setor',choices=SETOR_TYPE_CHOICES) 
+    descrição = models.TextField()
+
+class Ocorrencia(models.Model):
+    SETOR_TYPE_CHOICES = (
+        (1, 'Setor A Funcionarios'),
+        (2, 'Setor B Geral'),
+        (3, 'Setor C Geral'),
+        (4, 'Setor D Geral'),
+    )
+    OCCURRENCE_TYPE_CHOICES = (
+        (1, 'Assalto / Furto'),
+        (2, 'Batida / Sinistro'),
+        (3, 'Estacionamento Indevido'),
+        (4, 'Inundação'),
+        (5, 'Dano ao Veiculo'),
+    )
+    
+    placa = models.CharField(max_length=7, null=False, unique=True)
+    setor_type = models.PositiveSmallIntegerField('Setor',choices=SETOR_TYPE_CHOICES, null=True) 
+    occurrence_type = models.PositiveSmallIntegerField('Motivo da Ocorrencia', choices=OCCURRENCE_TYPE_CHOICES)
+    obs = models.TextField('Obersavões')
     date_joined = models.DateTimeField('Data de entrada', auto_now_add=True)

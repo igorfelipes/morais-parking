@@ -64,6 +64,28 @@
       </div>
     </div>
     {% endif %}
+    <div class="col-sm-4">
+      <div class="card">
+        <img class="card-img-top" src="{% static 'img/eventos.jpg' %}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">Registro de Eventos</h5>
+          <p class="card-text">Registro de Novos Eventos</p>
+          <a href="{% url 'cadastro-evento'%}" class="btn btn-primary">Criar Evento</a>
+        </div>
+      </div>
+    </div>
+</div>
+  
+    <div class="col-sm-4">
+      <div class="card">
+        <img class="card-img-top" src="{% static 'img/ocorrencia.jpg' %}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">Registro de Ococrencias</h5>
+          <p class="card-text">Registrar Ocorrencias no Estacionamnento</p>
+          <a href="{% url 'cadastro-ocorrencia'%}" class="btn btn-primary">Registrar Ocorrencias</a>
+        </div>
+      </div>
+    </div>
 </div>
 
 

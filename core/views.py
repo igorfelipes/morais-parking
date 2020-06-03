@@ -1,9 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from core.forms import  CadastroVeiculoForm
-from core.forms import EntradaVeiculosForm
-from core.models import Veiculo
-from core.models import Entrada
+from core.forms import *
+from core.models import *
 
 
 @login_required
@@ -60,3 +58,29 @@ def entradaVeiculo(request):
         'form': form
     }
     return render(request, template_name, context_to_render)
+
+def cadastrarEvento(request):
+    if request.method == 'POST':
+        form = EventosForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('cadastro-evento')
+    else:
+        form = EventosForm()
+        formContextToRender = {
+            'form': form
+            }
+        return render(request, 'eventos.html',formContextToRender )
+
+def cadastrarOcorrencia(request):
+    if request.method == 'POST':
+        form = OcorrenciaForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('cadastro-ocorrencia')
+    else:
+        form = OcorrenciaForm()
+        formContextToRender = {
+            'form': form
+            }
+        return render(request, 'ocorrencias.html',formContextToRender )

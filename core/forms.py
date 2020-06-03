@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm
-from core.models import Veiculo, Entrada
+from core.models import Veiculo, Entrada, Evento, Ocorrencia
 
 
 class CadastroVeiculoForm(ModelForm):
@@ -28,4 +28,14 @@ class EntradaVeiculosForm(ModelForm):
     class Meta:
         model = Entrada
         fields = ['setor_type', 'placa']
+
+class EventosForm(ModelForm):
+    class Meta:
+        model = Evento
+        fields = ['evento', 'data', 'setor_type', 'descrição']
+
+class OcorrenciaForm(ModelForm):
+    class Meta:
+        model = Ocorrencia
+        fields = ['placa','setor_type','occurrence_type','obs']
     
