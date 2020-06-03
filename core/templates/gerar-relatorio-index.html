@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title%} Home{%endblock%}
+
+{% block body%}
+
+<div class="row">
+    <div class="col-md4 offset-md-4">
+        <div class="card auth-card">
+            <div class="card-body">
+                <h4 class="card-title text-center">Morais Parking - Gerar Relatório</h4>
+                <form method="POST">
+                    <button type="submit" class="btn btn-success btn-block" method='post'>Emitir</button>
+                    <a class="btn btn-secondary btn-block" href="{% url 'index'%}"> Voltar</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock%}

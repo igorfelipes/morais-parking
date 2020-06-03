@@ -111,5 +111,5 @@ def atualizarVaga(request, id):
     return render(request, 'editar-vagas.html',{'form': form,'vagas': vagas} 
         )
 
-def gerarRelatorio(request):
-    return render(request, 'gerar-relatorio.html')
+def gerarRelatorio_index(request):
+    return render(request, 'gerar-relatorio-index.html')
