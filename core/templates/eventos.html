@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title%} Home{%endblock%}
+
+{% block body%}
+<div>
+<h1>Morais Parking</h1>
+</div>
+
+
+<form method="POST">
+    <h1>Cadastro de Eventos</h1>
+    {% csrf_token %}
+    {{form|crispy}}
+    <button type="submit" class="btn btn-success" method="post">Criar</button>
+    <a class="btn btn-secondary" href="{% url 'index'%}"> Voltar</a>
+</form>
+
+{% endblock%}
