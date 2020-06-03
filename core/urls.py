@@ -12,5 +12,6 @@ urlpatterns = [
     path('ocorrencia/', cadastrarOcorrencia, name='cadastro-ocorrencia'),
     path('vagas/', monitorarVagas, name='monitoramento-vagas'),
     path('listar-vagas/', vagasList, name='listar-vagas'),
-    path('editar-vagas/<int:id>/', atualizarVaga, name='atualizar-vagas')
+    path('editar-vagas/<int:id>/', atualizarVaga, name='atualizar-vagas'),
+    path('gerar-relatorio/', gerarRelatorio, name='gerar-relatorio')
 ]

@@ -96,6 +96,16 @@
           <a href="{% url 'listar-vagas'%}" class="btn btn-primary">Saiba mais</a>
         </div>
       </div>
+    </div>   
+   <div class="col-sm-4">
+      <div class="card">
+        <img class="card-img-top" src="{% static 'img/relatorios.jpg' %}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">Gerar Relatórios</h5>  
+          <p class="card-text">Relatórios gerais do sistema Morais Parking</p>
+          <a href="{% url 'gerar-relatorio'%}" class="btn btn-primary">Emitir Relatório</a>
+        </div>
+      </div>
     </div>
     {% endif %}
 </div>
