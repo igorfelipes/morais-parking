@@ -56,3 +56,15 @@ class Ocorrencia(models.Model):
     occurrence_type = models.PositiveSmallIntegerField('Motivo da Ocorrencia', choices=OCCURRENCE_TYPE_CHOICES)
     obs = models.TextField('Obersavões')
     date_joined = models.DateTimeField('Data de entrada', auto_now_add=True)
+
+class Vagas(models.Model):
+    SETOR_TYPE_CHOICES = (
+        (1, 'Setor A Funcionarios'),
+        (2, 'Setor B Geral'),
+        (3, 'Setor C Geral'),
+        (4, 'Setor D Geral'),
+    )
+    
+    vagas_normais = models.IntegerField(null=False)
+    vagas_especiais = models.IntegerField(null=False)
+    setor_type = models.PositiveSmallIntegerField('Setor',choices=SETOR_TYPE_CHOICES)

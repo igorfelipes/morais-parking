@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from core.forms import *
-from core.models import *
+from core.forms import * 
+from core.models import * 
 
 
 @login_required
@@ -83,4 +83,17 @@ def cadastrarOcorrencia(request):
         formContextToRender = {
             'form': form
             }
-        return render(request, 'ocorrencias.html',formContextToRender )
+        return render(request, 'ocorrencias.html',formContextToRender)
+
+def monitorarVagas(request):
+    if request.method == 'POST':
+        form = VagasForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('monitoramento-vagas')
+    else:
+        form = VagasForm()
+        formContextToRender = {
+            'form': form
+        }
+        return render(request, 'monitor-vagas.html', formContextToRender)

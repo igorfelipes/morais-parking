@@ -10,4 +10,5 @@ urlpatterns = [
     path('entrada/', entradaVeiculo, name='entrada-veiculo'),
     path('eventos/', cadastrarEvento, name='cadastro-evento'),
     path('ocorrencia/', cadastrarOcorrencia, name='cadastro-ocorrencia'),
+    path('vagas/', monitorarVagas, name='monitoramento-vagas'),
 ]
