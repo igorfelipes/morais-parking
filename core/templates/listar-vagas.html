@@ -7,6 +7,13 @@
 <h1>Morais Parking</h1>
 </div>
 
+{% if messages %}
+{% for message in messages %}
+<script type="text/javascript">
+  alert('{{message}}')
+</script>
+{% endfor %}
+{% endif %}
 
 <div class="offset-1 col-10 list-div">
     <h1>Lista de Vagas</h1>

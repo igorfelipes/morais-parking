@@ -7,6 +7,14 @@
 {% block body%}
 
 <div class="row">
+
+  {% if messages %}
+  {% for message in messages %}
+  <script type="text/javascript">
+    alert('{{message}}')
+  </script>
+  {% endfor %}
+  {% endif %}
   
     {% if user.user_type == 1 or user.user_type == None %}  
     <div class="col-sm-4">

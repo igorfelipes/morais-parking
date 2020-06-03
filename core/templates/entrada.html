@@ -7,6 +7,14 @@
 <h1>Morais Parking</h1>
 </div>
 
+{% if messages %}
+{% for message in messages %}
+<script type="text/javascript">
+  alert('{{message}}')
+</script>
+{% endfor %}
+{% endif %}
+
 
 <form method="POST">
     <h1>Cadastro de Veículos</h1>

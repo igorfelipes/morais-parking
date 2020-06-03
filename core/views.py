@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 from django.http import HttpResponse, FileResponse
 from django.template.loader import get_template
 from core.forms import * 
@@ -22,6 +23,7 @@ def cadastrarVeiculo(request):
         form = CadastroVeiculoForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.info(request, 'Veículo Cadastrado com Sucesso!')
             return redirect('index')
     else: 
         form = CadastroVeiculoForm()
@@ -35,6 +37,7 @@ def atualizarVeiculo(request, id):
     form = CadastroVeiculoForm(request.POST or None, instance=veiculo)
     if form.is_valid():
         form.save()
+        messages.info(request, 'Veículo Atualizado com Sucesso!')
         return redirect('listar-veiculos')
     return render(request, 'editar-veiculo.html',{'form': form, 'veiculo': veiculo} )
 
@@ -42,6 +45,7 @@ def deletarVeiculo(request, id):
     veiculo = get_object_or_404(Veiculo, pk=id)
     if request.method == 'POST':
         veiculo.delete()
+        messages.info(request, 'Veículo deletado com Sucesso!')
         return redirect('listar-veiculos')
     return render(request, 'deletar-veiculo.html', {'veiculo': veiculo})
 
@@ -53,6 +57,7 @@ def entradaVeiculo(request):
         form = EntradaVeiculosForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.info(request, 'Entrada Validada com sucesso!')
             return redirect('entrada-veiculo')
     else:
         form = EntradaVeiculosForm()
@@ -67,6 +72,7 @@ def cadastrarEvento(request):
         form = EventosForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.info(request, 'Evento cadastrado com Sucesso!')
             return redirect('cadastro-evento')
     else:
         form = EventosForm()
@@ -80,6 +86,7 @@ def cadastrarOcorrencia(request):
         form = OcorrenciaForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.info(request, 'Ocorrência cadastrada com Sucesso! com Sucesso!')
             return redirect('cadastro-ocorrencia')
     else:
         form = OcorrenciaForm()
@@ -98,6 +105,7 @@ def atualizarVaga(request, id):
     form = VagasForm(request.POST or None, instance=vagas)
     if form.is_valid():
         form.save()
+        messages.info(request, 'Vaga atualizada com Sucesso!')
         return redirect('listar-vagas')
     return render(request, 'editar-vagas.html',{'form': form,'vagas': vagas} 
         )
@@ -106,6 +114,8 @@ def gerarRelatorio_index(request):
     return render(request, 'gerar-relatorio-index.html')
 
 def gerarRelatorio(request):
+    messages.info(request, 'Relatório gerado com sucesso!')
+
     vagas = Vagas.objects.all()
     ocorrencias = Ocorrencia.objects.all()
 
