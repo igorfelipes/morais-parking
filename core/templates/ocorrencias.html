@@ -9,10 +9,10 @@
 
 
 <form method="POST">
-    <h1>Monitoramento de Vagas</h1>
+    <h1>Cadastro de Ocorrências</h1>
     {% csrf_token %}
     {{form|crispy}}
-    <button type="submit" class="btn btn-success" method="post">Vizualizar</button>
+    <button type="submit" class="btn btn-success" method='post'>Registrar</button>
     <a class="btn btn-secondary" href="{% url 'index'%}"> Voltar</a>
 </form>
 

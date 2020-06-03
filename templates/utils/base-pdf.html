@@ -1,0 +1,132 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Relatorio Geral</title>
+    <style type="text/css">
+        @page {
+            size: A4;
+            margin: 1cm;
+        }
+
+        .table {
+            width: 100%;
+            max-width: 100%;
+            margin-bottom: 5px;
+            background-color: #fff;
+        }
+
+        .table th,
+        .table td {
+            padding: 5px;
+            vertical-align: top;
+            border-top: 1px solid #000;
+            text-align: center;
+        }
+
+        .table thead th {
+            vertical-align: bottom;
+            border-bottom: 2px solid #000;
+        }
+
+        .table tbody + tbody {
+            border-top: 2px solid #000;
+        }
+
+        .table .table {
+            background-color: #fff;
+        }
+
+        .list-group {
+            display: block;
+            width: 100%;
+            list-style: none;
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+
+        .list-group p {
+            width: 100%;
+            height: 20px;
+            line-height: 20px;
+            list-style: none;
+            font-size: 1.1em;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h3>Data: {% now "jS F Y H:i" %}</h3>
+        </div>
+
+        <div class="list-group">
+            <spam>Name: {{ username }}</spam>
+        </div>
+
+        <ul class="cars-list">
+
+            <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">Setor</th>
+                    <th scope="col">Quantidade de Vagas Normais</th>
+                    <th scope="col">Quantidade de Vagas Especiais</th>
+                    <th scope="col">Vagas Normais Ocupadas</th>
+                    <th scope="col">Vagas Especiais Ocupadas</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {% for vaga in vagas%}
+                  <tr>
+                    <td>{{vaga.setor_type}}</td>
+                    <td>{{vaga.vagas_normais}}</td>
+                    <td>{{vaga.vagas_especiais}}</td>    
+                    <td>{{vaga.vagas_normais_ocupadas}}</td>    
+                    <td>{{vaga.vagas_especiais_ocupadas}}</td>    
+                  </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+
+        </ul>
+
+        <div class="list-group">
+            <spam>Quantidade de Ocorrencias: {{ ocorrencias|length }}</spam>
+        </div>
+
+        <ul class="cars-list">
+
+            <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">Setor</th>
+                    <th scope="col">Placa</th>
+                    <th scope="col">Tipo de ocorrencia</th>
+                    <th scope="col">Observacoes</th>
+                    <th scope="col">Data</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {% for ocorrencia in ocorrencias %}
+                  <tr>
+                    <td>{{ocorrencia.setor_type}}</td>  
+                    <td>{{ocorrencia.placa}}</td>  
+                    <td>{{ocorrencia.occurrence_type}}</td>  
+                    <td>{{ocorrencia.obs}}</td>  
+                    <td>{{ocorrencia.date_joined}}</td>  
+                  </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>

@@ -10,7 +10,7 @@
             <div class="card-body">
                 <h4 class="card-title text-center">Morais Parking - Gerar Relatório</h4>
                 <form method="POST">
-                    <button type="submit" class="btn btn-success btn-block" method='post'>Emitir</button>
+                    <a class="btn btn-primary btn-block" href="{% url 'gerar-relatorio' %}"> Emitir PDF</a>
                     <a class="btn btn-secondary btn-block" href="{% url 'index'%}"> Voltar</a>
                 </form>
             </div>

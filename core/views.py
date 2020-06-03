@@ -1,8 +1,11 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse, FileResponse
+from django.template.loader import get_template
 from core.forms import * 
 from core.models import * 
 
+from .utils import render_to_pdf
 
 @login_required
 def home(request):
@@ -80,23 +83,11 @@ def cadastrarOcorrencia(request):
             return redirect('cadastro-ocorrencia')
     else:
         form = OcorrenciaForm()
-        formContextToRender = {
-            'form': form
-            }
-        return render(request, 'ocorrencias.html',formContextToRender)
 
-def monitorarVagas(request):
-    if request.method == 'POST':
-        form = VagasForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('monitoramento-vagas')
-    else:
-        form = VagasForm()
-        formContextToRender = {
-            'form': form
+    formContextToRender = {
+        'form': form
         }
-        return render(request, 'monitor-vagas.html', formContextToRender)
+    return render(request, 'ocorrencias.html',formContextToRender)
 
 def vagasList(request):
     vagas = Vagas.objects.all() 
@@ -113,3 +104,22 @@ def atualizarVaga(request, id):
 
 def gerarRelatorio_index(request):
     return render(request, 'gerar-relatorio-index.html')
+
+def gerarRelatorio(request):
+    vagas = Vagas.objects.all()
+    ocorrencias = Ocorrencia.objects.all()
+
+    template = get_template('utils/base-pdf.html')
+    
+    context = {
+        'vagas': vagas,
+        'username': request.user,
+        'ocorrencias': ocorrencias,
+    }
+    
+    html = template.render(context)
+    pdf = render_to_pdf('utils/base-pdf.html', context)
+    
+    if pdf:
+        return HttpResponse(pdf, content_type='application/pdf')
+    return HttpResponse('Not found')

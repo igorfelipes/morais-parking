@@ -47,6 +47,19 @@ class EventosForm(ModelForm):
         fields = ['evento', 'data', 'setor_type', 'descrição']
 
 class OcorrenciaForm(ModelForm):
+    placa = forms.CharField(max_length=7)
+
+    def clean_placa(self):
+        placaInput = self.cleaned_data['placa']
+
+        placa = Veiculo.objects.filter(placa=placaInput)
+
+        if not placa:
+            raise forms.ValidationError( 'Placa não cadastrada ')
+
+        return placaInput
+
+
     class Meta:
         model = Ocorrencia
         fields = ['placa','setor_type','occurrence_type','obs']
