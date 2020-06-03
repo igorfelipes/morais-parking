@@ -33,7 +33,7 @@ class EntradaVeiculosForm(ModelForm):
         else:
             vaga.vagas_normais_ocupadas +=1
 
-
+        vaga.save()
         return placaInput
 
 
