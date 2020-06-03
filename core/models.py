@@ -67,4 +67,6 @@ class Vagas(models.Model):
     
     vagas_normais = models.IntegerField(null=False)
     vagas_especiais = models.IntegerField(null=False)
+    vagas_especiais_ocupadas = models.IntegerField(null=False)
+    vagas_normais_ocupadas = models.IntegerField(null=False)
     setor_type = models.PositiveSmallIntegerField('Setor',choices=SETOR_TYPE_CHOICES)

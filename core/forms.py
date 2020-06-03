@@ -1,4 +1,5 @@
 from django import forms
+from django.shortcuts import get_object_or_404
 from django.forms import ModelForm
 from core.models import Veiculo, Entrada, Evento, Ocorrencia, Vagas
 
@@ -18,10 +19,21 @@ class EntradaVeiculosForm(ModelForm):
 
         placa = Veiculo.objects.filter(placa=placaInput)
 
+        setor_type = self.cleaned_data['setor_type']
+
         if not placa:
-            print(placa)
             raise forms.ValidationError( 'Placa não cadastrada ')
-        
+
+       
+        placa = Veiculo.objects.get(placa=placaInput)
+        vaga = Vagas.objects.get(setor_type=setor_type)
+
+        if placa.area_especial:
+            vaga.vagas_especiais_ocupadas += 1 
+        else:
+            vaga.vagas_normais_ocupadas +=1
+
+
         return placaInput
 
 
@@ -42,5 +54,5 @@ class OcorrenciaForm(ModelForm):
 class VagasForm(ModelForm):
     class Meta:
         model = Vagas
-        fields = ['vagas_normais', 'vagas_especiais','setor_type']
+        fields = ['vagas_normais', 'vagas_especiais','setor_type', 'vagas_normais_ocupadas', 'vagas_especiais_ocupadas']
     
