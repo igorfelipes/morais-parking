@@ -1,4 +1,4 @@
 djongo
-django==2.2.10
+django==2.2.13
 django-crispy-forms
 --pre xhtml2pdf
